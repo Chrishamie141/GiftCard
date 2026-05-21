@@ -3,7 +3,8 @@
 Production-oriented Next.js App Router app for selling cleaning service gift certificates.
 
 ## Features
-- Mobile-first landing page with QR code to open the gift certificate form
+- Mobile-first gift certificate landing page at `/gift-card`
+- Dedicated QR helper/admin page at `/qr` with downloadable PNG QR and copy-URL action
 - Gift certificate tiers: $100 / $200 / $300
 - Stripe Checkout for payment
 - Stripe webhook to finalize order
@@ -11,6 +12,11 @@ Production-oriented Next.js App Router app for selling cleaning service gift cer
 - PDF gift certificate generation
 - Resend email delivery for receipt + certificate PDF
 - Apple Wallet placeholder route for `.pkpass`
+
+## QR Flow
+- Generate/manage QR at `/qr`
+- QR encodes your public landing page URL (`https://yourdomain.com/gift-card`)
+- Customer scan flow: **Scan QR → opens `/gift-card`**
 
 ## Apple Wallet Important Note
 Apple Wallet support will **NOT work** until you provision real Apple Developer PassKit certificates and IDs. This repository includes placeholders/instructions only.

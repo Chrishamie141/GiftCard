@@ -17,7 +17,7 @@ export async function POST(req: Request) {
     mode: "payment",
     line_items: [{ price, quantity: 1 }],
     success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: baseUrl,
+    cancel_url: `${baseUrl}/gift-card`,
     metadata: body
   });
 
