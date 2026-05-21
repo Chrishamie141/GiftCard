@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model GiftCertificateOrder {
+  id               String   @id @default(cuid())
+  stripeSessionId  String   @unique
+  amount           Int
+  purchaserName    String
+  recipientName    String
+  email            String
+  phone            String
+  serviceAddress   String
+  giftMessage      String?
+  certificateCode  String
+  createdAt        DateTime @default(now())
+}
