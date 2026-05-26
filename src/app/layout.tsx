@@ -1,6 +1,4 @@
-// @ts-ignore: Importing CSS for side effects
 import "./globals.css";
-// @ts-ignore: Importing CSS for side effects
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -8,7 +6,11 @@ export const metadata: Metadata = {
   description: "Gift professional cleaning services with a digital certificate."
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body>{children}</body>
