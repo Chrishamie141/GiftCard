@@ -8,15 +8,22 @@ datasource db {
 }
 
 model GiftCertificateOrder {
-  id               String   @id @default(cuid())
-  stripeSessionId  String   @unique
-  amount           Int
-  purchaserName    String
-  recipientName    String
-  email            String
-  phone            String
-  serviceAddress   String
-  giftMessage      String?
-  certificateCode  String
-  createdAt        DateTime @default(now())
+  id                    String   @id @default(cuid())
+  stripeSessionId       String   @unique
+  stripePaymentIntentId String?
+  amount                Int
+  purchaserFirstName    String
+  purchaserLastName     String
+  purchaserEmail        String
+  purchaserPhone        String
+  recipientFirstName    String
+  recipientLastName     String
+  recipientEmail        String?
+  serviceAddress        String
+  requestedCleaningDate DateTime?
+  giftMessage           String?
+  certificateCode       String
+  customerEmailSent     Boolean  @default(false)
+  ownerEmailSent        Boolean  @default(false)
+  createdAt             DateTime @default(now())
 }

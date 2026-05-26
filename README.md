@@ -1,63 +1,50 @@
 # Prestine Pros Cleaning Gift Certificates
 
-Production-oriented Next.js App Router app for selling cleaning service gift certificates.
+Production-ready Next.js App Router app for selling cleaning service gift certificates with Stripe Checkout, PDF generation, and email fulfillment.
 
 ## Features
-- Mobile-first gift certificate landing page at `/gift-card`
-- Dedicated QR helper/admin page at `/qr` with downloadable PNG QR and copy-URL action
-- Gift certificate tiers: $100 / $200 / $300
-- Stripe Checkout for payment
-- Stripe webhook to finalize order
+- Mobile-first gift certificate purchase page at `/gift-card`
+- Gift certificate options: $100 / $200 / $300
+- Purchaser and recipient information capture with validation
+- Stripe Checkout redirect flow
+- Stripe webhook order finalization
 - Prisma + SQLite order persistence
-- PDF gift certificate generation
-- Resend email delivery for receipt + certificate PDF
-- Apple Wallet placeholder route for `.pkpass`
+- Polished PDF gift certificate generation
+- Purchaser email with attached PDF certificate and receipt details
+- Owner notification email for every successful purchase
 
-## QR Flow
-- Generate/manage QR at `/qr`
-- QR encodes your public landing page URL (`https://yourdomain.com/gift-card`)
-- Customer scan flow: **Scan QR → opens `/gift-card`**
-
-## Apple Wallet Important Note
-Apple Wallet support will **NOT work** until you provision real Apple Developer PassKit certificates and IDs. This repository includes placeholders/instructions only.
+## Environment Variables
+Create `.env.local` and configure:
+- `RESEND_API_KEY`
+- `OWNER_EMAIL`
+- `STRIPE_SECRET_KEY`
+- `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`
+- `NEXT_PUBLIC_APP_URL`
+- `STRIPE_WEBHOOK_SECRET`
+- `STRIPE_PRICE_100`
+- `STRIPE_PRICE_200`
+- `STRIPE_PRICE_300`
+- `RESEND_FROM_EMAIL`
+- `DATABASE_URL`
 
 ## Setup
-1. Install deps:
+1. Install dependencies:
    ```bash
    npm install
    ```
-2. Configure env:
-   ```bash
-   cp .env.example .env
-   ```
-3. Set your Stripe, Resend, and Apple Wallet env vars.
-4. Run database setup:
+2. Run database setup:
    ```bash
    npx prisma migrate dev --name init
    ```
-5. Start app:
+3. Start local development:
    ```bash
    npm run dev
    ```
 
 ## Stripe
-- Create 3 Stripe Prices and map them to:
-  - `STRIPE_PRICE_100`
-  - `STRIPE_PRICE_200`
-  - `STRIPE_PRICE_300`
+- Configure product prices and map them to `STRIPE_PRICE_100`, `STRIPE_PRICE_200`, `STRIPE_PRICE_300`.
 - Configure webhook endpoint: `/api/webhooks/stripe`
-- Subscribe to `checkout.session.completed`
-
-## PassKit setup placeholders
-Add cert files before implementing real pass generation:
-- `certs/AppleWWDRCA.pem`
-- `certs/signerCert.pem`
-- `certs/signerKey.pem`
-
-Then configure:
-- `APPLE_TEAM_IDENTIFIER`
-- `APPLE_PASS_TYPE_IDENTIFIER`
-- `APPLE_SIGNER_KEY_PASSPHRASE`
+- Subscribe to event: `checkout.session.completed`
 
 ## Build
 ```bash
