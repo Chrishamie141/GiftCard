@@ -17,9 +17,9 @@ type CheckoutPayload = {
 
 const allowedAmounts = new Set([100, 200, 300]);
 const priceMap: Record<number, string | undefined> = {
-  100: process.env.STRIPE_PRICE_100,
-  200: process.env.STRIPE_PRICE_200,
-  300: process.env.STRIPE_PRICE_300
+  100: process.env.STRIPE_PRICE_ID_100,
+  200: process.env.STRIPE_PRICE_ID_200,
+  300: process.env.STRIPE_PRICE_ID_300
 };
 
 const validEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);

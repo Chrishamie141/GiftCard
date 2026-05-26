@@ -1,4 +1,6 @@
+// @ts-ignore: Importing CSS for side effects
 import "./globals.css";
+// @ts-ignore: Importing CSS for side effects
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
