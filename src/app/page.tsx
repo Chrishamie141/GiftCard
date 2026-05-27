@@ -25,7 +25,7 @@ export default function Home() {
             width={1000}
             height={350}
             priority
-            className="h-auto w-36 md:w-44"
+            className="h-auto w-64 object-contain md:w-80 lg:w-96"
           />
         </Link>
 
