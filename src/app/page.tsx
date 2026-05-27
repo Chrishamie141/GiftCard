@@ -22,8 +22,8 @@ export default function Home() {
           <Image
             src="/images/prestine-logo.png"
             alt="Prestine Pros Cleaning Logo"
-            width={200}
-            height={60}
+            width={300}
+            height={100}
             priority
             className="h-auto w-36 md:w-44"
           />
